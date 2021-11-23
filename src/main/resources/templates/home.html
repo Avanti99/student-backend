@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="" th:href="@{/css/home.css}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Anonymous</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto text-uppercase">
+          <li class="nav-item active" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}"> Logout </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h2 class="heading">Student Details</h2>
+
+    <a th:href="@{/addStudentForm}" class="add btn btn-outline-primary"> Add Student</a>
+    
+    <section class="studentdetail">
+      <div class="row">
+        <div class="studentcolumn col-lg-3 col-md-6" th:each="student : ${listStudents}">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">Student ID : <span th:text = "${student.id}"></span></p>
+              <p class="card-text">Student Name : <span th:text = "${student.name}"></span></p>
+              <p class="card-text">Student Stream: <span th:text = "${student.stream}"></span></p>
+              <a th:href="@{/showForm/{id}(id=${student.id})}" class="update btn btn-outline-primary">Update</a>
+              <a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="delete btn btn-outline-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
