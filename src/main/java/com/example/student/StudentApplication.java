@@ -19,7 +19,7 @@ public class StudentApplication {
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
             .allowedOrigins("http://localhost:4200")
-			.allowCredentials(true)
+			// .allowCredentials(true)
 			.allowedMethods("GET","POST","DELETE","PUT","PATCH","OPTIONS","HEAD")
 			.allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers","*");
             // allowedOrigins("*").
