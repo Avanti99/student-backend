@@ -25,7 +25,7 @@ public class StudentApplication {
             // allowedOrigins("*").
             // allowedMethods("*").
             // allowedHeaders("*").
-            // allowCredentials(true);
+            // allowCredentials(true); 
         }
     }
 
